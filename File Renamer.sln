@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2018
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "File Renamer", "File Renamer\File Renamer.vcxproj", "{DC66829E-E304-4056-A394-0CA8A8976177}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DC66829E-E304-4056-A394-0CA8A8976177}.Debug|x64.ActiveCfg = Debug|x64
+		{DC66829E-E304-4056-A394-0CA8A8976177}.Debug|x64.Build.0 = Debug|x64
+		{DC66829E-E304-4056-A394-0CA8A8976177}.Debug|x86.ActiveCfg = Debug|Win32
+		{DC66829E-E304-4056-A394-0CA8A8976177}.Debug|x86.Build.0 = Debug|Win32
+		{DC66829E-E304-4056-A394-0CA8A8976177}.Release|x64.ActiveCfg = Release|x64
+		{DC66829E-E304-4056-A394-0CA8A8976177}.Release|x64.Build.0 = Release|x64
+		{DC66829E-E304-4056-A394-0CA8A8976177}.Release|x86.ActiveCfg = Release|Win32
+		{DC66829E-E304-4056-A394-0CA8A8976177}.Release|x86.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {826AA16F-8C45-421E-A115-9D9120685366}
+	EndGlobalSection
+EndGlobal
