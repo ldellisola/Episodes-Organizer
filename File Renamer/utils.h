@@ -1,5 +1,6 @@
 #pragma once
 #include "CursesClass.h"
+#include "CSVUtils.h"
 #include <string>
 #include <vector>
 #include <fstream>
@@ -25,3 +26,5 @@ string getEpisode(string ep, CutPos pos);
 CutPos getEpisodePlace(string ep, CursesClass& curses);
 
 void removeForbbidenChars(vector <string>& arr);
+
+bool askForIntendedShow(vector<ShowData>& posibleShows, ShowData& data, CursesClass& curses);

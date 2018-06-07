@@ -161,3 +161,70 @@ void removeForbbidenChars(vector<string>& arr)
 		}
 	}
 }
+
+
+bool askForIntendedShow(vector<ShowData>& posibleShows, ShowData& data, CursesClass& curses) {
+	Cursor tempCurs;
+	clear();
+	tempCurs = { 0,0 };
+	curses << tempCurs << "We couldn't find the TV show, did you mean any of these ones?. esc if none was found, enter to confuirm and arrows to select";
+	int index = 0;
+
+	for (ShowData& data_ : posibleShows) {
+		tempCurs = { 1 + ((unsigned int)index++),0 };
+		curses << tempCurs << data_.name;
+	}
+	index = 0;
+	bool leave = false;
+	while (!leave) {
+		switch (getch()) {
+		case '\n':
+			leave = true;
+			break;
+		case 27:
+			index = -1;
+			leave = true;
+		case KEY_DOWN:
+			if (index < posibleShows.size() - 1) {
+				index++;
+
+				color_set(1, nullptr);
+				mvdeleteln(index - 1 + 1, 0);
+				tempCurs = { 1 + ((unsigned int)index - 1),0 };
+				curses << tempCurs << posibleShows[index - 1].name;
+
+				color_set(2, nullptr);
+				mvdeleteln(index + 1, 0);
+				tempCurs = { 1 + ((unsigned int)index),0 };
+				curses << tempCurs << posibleShows[index].name;
+				color_set(1, nullptr);
+			}
+
+
+
+			break;
+		case KEY_UP:
+			if (index > 0) {
+				index--;
+
+				color_set(1, nullptr);
+				mvdeleteln((unsigned int)index + 1 + 1, 0);
+				tempCurs = { 1 + ((unsigned int)index + 1),0 };
+				curses << tempCurs << posibleShows[index + 1].name;
+
+				color_set(2, nullptr);
+				mvdeleteln(index + 1, 0);
+				tempCurs = { 1 + ((unsigned int)index),0 };
+				curses << tempCurs << posibleShows[index].name;
+
+				color_set(1, nullptr);
+			}
+		}
+	}
+	if (index >= 0) {
+		data = posibleShows[index];
+		return true;
+	}
+	else return false;
+	
+}

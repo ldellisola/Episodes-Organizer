@@ -6,23 +6,34 @@ enum { numberEP, seasonEP, episodeEP, airdateEP, titleEP, tvmazeLinkEP};
 
 bool compareNames(string name, string realName);
 
-void saveCSV(string & file, string name)
+bool AproxNames(string name, string realName);
+
+
+
+void parsePosibleShows(ShowData & data, vector<ShowData>& posibleShows, string file)
 {
-	ofstream out((name + ".csv").c_str(), ofstream::out);
-	for (char& ch : file) {
-		out.put(ch);
+	CsvParser * parser = CsvParser_new(file.c_str(), ",", 1);
+	CsvRow * row;
+	const CsvRow * header = CsvParser_getHeader(parser);
+	bool rightTitle = false;
+
+	if (header != NULL) {
+		while (row = CsvParser_getRow(parser)) {
+			const char **rowFields = CsvParser_getFields(row);
+
+			if (AproxNames(rowFields[titleIX], data.name)) {
+				ShowData temp;
+				temp.name = rowFields[titleIX];
+				temp.map = atoi(rowFields[TVmazeIX]);
+				temp.episodes = atoi(rowFields[numberOfEpisodesIX]);
+				temp.season = data.season;
+				posibleShows.push_back(temp);
+			}
+			
+			CsvParser_destroy_row(row);
+		}
+		CsvParser_destroy(parser);
 	}
-	out.close();
-}
-
-void getCorrectCVSFile(string & file)
-{
-	file = file.substr(file.find("<pre>")+ strlen("<pre>\n")+1);
-	file = file.substr(0, file.find("</pre>"));
-}
-
-void getCorrectTXTFile(string&file) {
-	file = file.substr(file.find("title"));
 }
 
 void parseIndex(string fileName, ShowData& data)
@@ -86,4 +97,17 @@ bool compareNames(string name, string realName) {
 		return true;
 	else return false;
 	
+}
+
+bool AproxNames(string name, string realName)
+{
+	for (char& ch : name)
+		ch = tolower(ch);
+	for (char& ch : realName)
+		ch = tolower(ch);
+
+	if (name.find(realName) == string::npos)
+		return false;
+	else
+		return true;
 }

@@ -13,11 +13,7 @@ typedef struct ShowData {
 	vector<string> episodeList;
 };
 
-void saveCSV(string& file, string name);
-
-void getCorrectCVSFile(string& file);
-
-void getCorrectTXTFile(string&file);
+void parsePosibleShows(ShowData& data, vector<ShowData>& posibleShows, string file);
 
 void parseIndex(string file, ShowData& data);
 

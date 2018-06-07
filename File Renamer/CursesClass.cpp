@@ -129,6 +129,12 @@ CursesClass& CursesClass::operator<<(std::string str)
 	
 }
 
+CursesClass & CursesClass::operator<<(Cursor curs)
+{
+	move(curs.y, curs.x);
+	return *this;
+}
+
 void CursesClass::clearDisplay()
 {
 	clear();

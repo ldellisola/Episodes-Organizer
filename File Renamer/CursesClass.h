@@ -3,6 +3,9 @@
 #include <string>
 
 using namespace std;
+typedef struct Cursor {
+	unsigned int y, x;
+};
 
 class CursesClass
 {
@@ -13,6 +16,7 @@ public:
 	int getNumberString(int posY, int posX, const char * errorMessage);
 	string getString(int posY, int posX, int maxSize);
 	CursesClass& operator<<(std::string str);
+	CursesClass& operator<<(Cursor curs);
 	void clearDisplay();
 private:
 	WINDOW * display = NULL;
