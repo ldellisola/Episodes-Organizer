@@ -80,5 +80,10 @@
     <None Include="Brooklyn Nine-Nine.csv">
       <Filter>Resource Files</Filter>
     </None>
+    <None Include="$(MSBuildThisFileDirectory)native\x64\*" />
+    <None Include="$(MSBuildThisFileDirectory)native\x64\*" />
+    <None Include="$(MSBuildThisFileDirectory)native\x64\*" />
+    <None Include="$(MSBuildThisFileDirectory)native\x64\*" />
+    <None Include="$(MSBuildThisFileDirectory)native\x64\*" />
   </ItemGroup>
 </Project>

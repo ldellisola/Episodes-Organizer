@@ -203,7 +203,6 @@
     <Import Project="..\packages\boost_regex-vc141.1.67.0.0\build\boost_regex-vc141.targets" Condition="Exists('..\packages\boost_regex-vc141.1.67.0.0\build\boost_regex-vc141.targets')" />
     <Import Project="..\packages\boost_chrono-vc141.1.67.0.0\build\boost_chrono-vc141.targets" Condition="Exists('..\packages\boost_chrono-vc141.1.67.0.0\build\boost_chrono-vc141.targets')" />
     <Import Project="..\packages\boost_timer-vc141.1.67.0.0\build\boost_timer-vc141.targets" Condition="Exists('..\packages\boost_timer-vc141.1.67.0.0\build\boost_timer-vc141.targets')" />
-    <Import Project="..\packages\MediaInfo.Native.17.12\build\MediaInfo.Native.targets" Condition="Exists('..\packages\MediaInfo.Native.17.12\build\MediaInfo.Native.targets')" />
   </ImportGroup>
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
@@ -218,6 +217,5 @@
     <Error Condition="!Exists('..\packages\boost_regex-vc141.1.67.0.0\build\boost_regex-vc141.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\boost_regex-vc141.1.67.0.0\build\boost_regex-vc141.targets'))" />
     <Error Condition="!Exists('..\packages\boost_chrono-vc141.1.67.0.0\build\boost_chrono-vc141.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\boost_chrono-vc141.1.67.0.0\build\boost_chrono-vc141.targets'))" />
     <Error Condition="!Exists('..\packages\boost_timer-vc141.1.67.0.0\build\boost_timer-vc141.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\boost_timer-vc141.1.67.0.0\build\boost_timer-vc141.targets'))" />
-    <Error Condition="!Exists('..\packages\MediaInfo.Native.17.12\build\MediaInfo.Native.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\MediaInfo.Native.17.12\build\MediaInfo.Native.targets'))" />
   </Target>
 </Project>
