@@ -28,3 +28,5 @@ CutPos getEpisodePlace(string ep, CursesClass& curses);
 void removeForbbidenChars(vector <string>& arr);
 
 bool askForIntendedShow(vector<ShowData>& posibleShows, ShowData& data, CursesClass& curses);
+
+double getEpisodeLenght2(string name);

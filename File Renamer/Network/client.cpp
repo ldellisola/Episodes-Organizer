@@ -39,6 +39,9 @@ std::string client::receiveMessage() {
 	char buf[PKGSIZE]; //El buffer debe ser del tamaño del paquete. 
 	size_t len = 0;
 
+	for (int i = 0; i < PKGSIZE; i++)
+		buf[i] = 0;
+
 	std::string auxString = "";
 	do {
 		len += this->socket_forClient->read_some(boost::asio::buffer(buf), error);

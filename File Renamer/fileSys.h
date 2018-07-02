@@ -13,3 +13,4 @@ using namespace boost::filesystem;
 
 vector<string> listall(path p, bool mode_, string extension);
 int check_existance(const char* file);
+long long int getFileSize(string path);

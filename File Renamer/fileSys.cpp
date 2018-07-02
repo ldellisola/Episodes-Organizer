@@ -36,3 +36,7 @@ vector<string> listall(path p, bool mode_, string extension) {
 	}
 	return found;
 }
+
+long long int getFileSize(string path) {
+	return boost::filesystem::file_size(path);
+}

@@ -159,6 +159,10 @@ void removeForbbidenChars(vector<string>& arr)
 		while ((pos = str.find("&quot;")) != string::npos) {
 			str.erase(pos,strlen("&quot;"));
 		}
+		while ((pos = str.find("&amp;")) != string::npos) {
+			str.erase(pos, strlen("&quot;"));
+			str.insert(pos, "and ");
+		}
 	}
 }
 
@@ -228,3 +232,5 @@ bool askForIntendedShow(vector<ShowData>& posibleShows, ShowData& data, CursesCl
 	else return false;
 	
 }
+
+
