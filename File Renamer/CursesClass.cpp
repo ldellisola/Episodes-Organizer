@@ -140,3 +140,8 @@ void CursesClass::clearDisplay()
 	clear();
 	move(0, 0);
 }
+
+WINDOW * CursesClass::getDispay()
+{
+	return this->display;
+}

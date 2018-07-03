@@ -18,6 +18,7 @@ public:
 	CursesClass& operator<<(std::string str);
 	CursesClass& operator<<(Cursor curs);
 	void clearDisplay();
+	WINDOW * getDispay();
 private:
 	WINDOW * display = NULL;
 	const bool nodelaySet = true;

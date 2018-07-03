@@ -171,7 +171,7 @@ bool askForIntendedShow(vector<ShowData>& posibleShows, ShowData& data, CursesCl
 	Cursor tempCurs;
 	clear();
 	tempCurs = { 0,0 };
-	curses << tempCurs << "We couldn't find the TV show, did you mean any of these ones?. esc if none was found, enter to confuirm and arrows to select";
+	curses << tempCurs << "We couldn't find the TV show, did you mean any of these ones?. Press 'enter' to confirm and arrows to select";
 	int index = 0;
 
 	for (ShowData& data_ : posibleShows) {
@@ -179,53 +179,53 @@ bool askForIntendedShow(vector<ShowData>& posibleShows, ShowData& data, CursesCl
 		curses << tempCurs << data_.name;
 	}
 	index = 0;
+	noecho();
+	nodelay(curses.getDispay(), true);
+
+
+	color_set(1, nullptr);
+	for (int i = 0; i < posibleShows.size(); i++) 
+		mvprintw(i + 1, 0, posibleShows[i].name.c_str());
+
+	color_set(2, nullptr);
+	tempCurs = { 1 + ((unsigned int)index),0 };
+	mvprintw(index + 1, 0, posibleShows[index].name.c_str());
+
 	bool leave = false;
 	while (!leave) {
 		switch (getch()) {
 		case '\n':
 			leave = true;
 			break;
-		case 27:
-			index = -1;
-			leave = true;
 		case KEY_DOWN:
 			if (index < posibleShows.size() - 1) {
 				index++;
 
 				color_set(1, nullptr);
-				mvdeleteln(index - 1 + 1, 0);
-				tempCurs = { 1 + ((unsigned int)index - 1),0 };
-				curses << tempCurs << posibleShows[index - 1].name;
+				for (int a = 0; a < posibleShows.size(); a++)
+					mvprintw(a + 1, 0, posibleShows[a].name.c_str());
 
 				color_set(2, nullptr);
-				mvdeleteln(index + 1, 0);
 				tempCurs = { 1 + ((unsigned int)index),0 };
 				curses << tempCurs << posibleShows[index].name;
-				color_set(1, nullptr);
 			}
-
-
-
 			break;
 		case KEY_UP:
 			if (index > 0) {
 				index--;
 
 				color_set(1, nullptr);
-				mvdeleteln((unsigned int)index + 1 + 1, 0);
-				tempCurs = { 1 + ((unsigned int)index + 1),0 };
-				curses << tempCurs << posibleShows[index + 1].name;
+				for (int a = 0; a < posibleShows.size(); a++)
+					mvprintw(a + 1, 0, posibleShows[a].name.c_str());
 
 				color_set(2, nullptr);
-				mvdeleteln(index + 1, 0);
 				tempCurs = { 1 + ((unsigned int)index),0 };
 				curses << tempCurs << posibleShows[index].name;
-
-				color_set(1, nullptr);
 			}
+			break;
 		}
 	}
-	if (index >= 0) {
+	if (index >= 0 && index < posibleShows.size()) {
 		data = posibleShows[index];
 		return true;
 	}

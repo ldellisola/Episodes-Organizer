@@ -70,8 +70,8 @@ void parseEpisodeList(string file, ShowData & data)
 	if (header != NULL) {
 		while (row = CsvParser_getRow(parser)) {
 			const char **rowFields = CsvParser_getFields(row);
-			a++;
-			if (a <= data.episodes) {
+			//a++;
+			//if (a <= data.episodes) {
 				if (data.season == atoi(rowFields[seasonEP])) {
 					data.episodeList.push_back(rowFields[titleEP]);
 				}
@@ -80,7 +80,7 @@ void parseEpisodeList(string file, ShowData & data)
 					CsvParser_destroy_row(row);
 					break;
 				}
-			}
+			//}
 
 			CsvParser_destroy_row(row);
 		}
