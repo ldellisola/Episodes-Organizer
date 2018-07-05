@@ -44,7 +44,7 @@ std::string client::receiveMessage() {
 
 	std::string auxString = "";
 	do {
-		len += this->socket_forClient->read_some(boost::asio::buffer(buf), error);
+		len += this->socket_forClient->read_some(boost::asio::buffer(buf,PKGSIZE), error);
 	} while (error.value() == WSAEWOULDBLOCK);
 
 	if (error) {
