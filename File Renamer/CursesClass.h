@@ -3,7 +3,7 @@
 #include <string>
 
 using namespace std;
-typedef struct Cursor {
+struct Cursor {
 	unsigned int y, x;
 };
 
@@ -17,6 +17,7 @@ public:
 	string getString(int posY, int posX, int maxSize);
 	CursesClass& operator<<(std::string str);
 	CursesClass& operator<<(Cursor curs);
+
 	void clearDisplay();
 	WINDOW * getDispay();
 private:

@@ -2,14 +2,11 @@
 
 bool fileExists(const char * fileName)
 {
-	bool retValue = false;
-	std::ifstream src;
-	src.open(fileName);
-
-	if (src.good())
-		retValue = true;
-	src.close();
-	return retValue;
+	path p(fileName);
+	if (exists(p))
+		if (is_regular_file(p))
+			return true;
+	return false;
 }
 
 
@@ -66,4 +63,52 @@ unsigned int getEpisodeLenght(string file)
 
 
 	return 0;
+}
+
+
+bool checkDirectoryExistance(const char* file)
+{
+	path p(file); //Constructor de path. lleva un const char.
+	if (exists(p))
+		if (is_directory(p))
+			return true;
+	return false;
+}
+
+vector<string> listall(path p, bool mode_, string extension) {
+	directory_iterator end_itr;
+	vector<string> found;
+	// cycle through the directory
+	for (directory_iterator itr(p); itr != end_itr; ++itr) {
+		// If it's not a directory, list it. If you want to list directories too, just remove this check.
+		if (is_regular_file(itr->path())) {
+			// assign current file name to current_file and echo it out to the console.
+			string current_file = itr->path().string();
+			if (current_file.size() >= 5) {
+				if (!strcmp(&current_file[current_file.size() - 4], extension.c_str())) {
+					found.push_back(current_file);
+					path aux(current_file);
+				}
+			}
+		}
+	}
+	return found;
+}
+
+long long int getFileSize(string path) {
+	return boost::filesystem::file_size(path);
+}
+
+bool getVideoFiles(string path, map<int, string>& exts, vector<string>& files, string&ext)
+{
+	int i = -1;
+	do {
+		ext = exts[++i];
+		files = listall(path, true, ext);
+	} while (i < 4 && files.size() == 0);
+
+	if (files.size() == 0)
+		return false;
+	else 
+		return true;
 }

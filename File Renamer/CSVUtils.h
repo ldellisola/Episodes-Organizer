@@ -7,7 +7,7 @@
 using namespace std;
 
 
-typedef struct ShowData {
+struct ShowData {
 	string name;
 	unsigned int season = 0, map = 0,episodes = 0;
 	vector<string> episodeList;

@@ -4,10 +4,11 @@
 #include <string>
 #include <vector>
 #include <fstream>
+#include <map>
 
 using namespace std;
 
-typedef struct CutPos
+struct CutPos
 {
 	size_t start, end;
 };
@@ -29,4 +30,6 @@ void removeForbbidenChars(vector <string>& arr);
 
 bool askForIntendedShow(vector<ShowData>& posibleShows, ShowData& data, CursesClass& curses);
 
-double getEpisodeLenght2(string name);
+
+map<int, string> getVideoFormatDictionary();
+

@@ -67,7 +67,7 @@ CutPos getEpisodePlace(string ep, CursesClass& curses)
 {
 	clear();
 	move(0, 0);
-	curses << "Select where it says the episode. use the keys, space  to select and enter finish. press esc to restart";
+	curses << "Select where it says the episode. Use the space key to select where the number starts. (This program is optimized for series with up to 99 episodes per season)";
 	move(1, 0);
 	curses << ep;
 	int index = 0;
@@ -91,32 +91,25 @@ CutPos getEpisodePlace(string ep, CursesClass& curses)
 			}
 			break;
 		case ' ':
-			if (pos.start == -1)
-				pos.start = index;
-			else
-				pos.end = index;
 			pos.start = index;
-			color_set(2, nullptr);
-			mvprintw(1,index,"%c", ep[index]);
-			index++;
-			move(1, index);
-			color_set(1, nullptr);
-			break;
-		case 27:
-			pos.start = -1;
-			pos.end = -1;
-			move(0, 0);
-			curses << ep;
+			pos.end = index+2;
 			leave = true;
 			break;
-		case '\n':
-			if (pos.end == -1)
-				pos.end = index;
-			pos.end = ++index;
-			color_set(2, nullptr);
-			printw("%c", ep[index]);
-			color_set(1, nullptr);
-			leave = true;
+		//case 27:
+		//	pos.start = -1;
+		//	pos.end = -1;
+		//	move(0, 0);
+		//	curses << ep;
+		//	leave = true;
+		//	break;
+		//case '\n':
+		//	if (pos.end == -1)
+		//		pos.end = index;
+		//	pos.end = ++index;
+		//	color_set(2, nullptr);
+		//	printw("%c", ep[index]);
+		//	color_set(1, nullptr);
+		//	leave = true;
 		}
 	}
 
@@ -231,6 +224,18 @@ bool askForIntendedShow(vector<ShowData>& posibleShows, ShowData& data, CursesCl
 	}
 	else return false;
 	
+}
+
+
+map<int, string> getVideoFormatDictionary()
+{
+	map<int, string> a;
+	a[0] = ".mp4";
+	a[1] = ".avi";
+	a[2] = ".mkv";
+	a[3] = ".mpeg";
+
+	return a;
 }
 
 

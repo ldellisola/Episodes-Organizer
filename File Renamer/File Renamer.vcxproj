@@ -169,7 +169,6 @@
     <ClInclude Include="CSV Parser\csvparser.h" />
     <ClInclude Include="CSVUtils.h" />
     <ClInclude Include="CursesClass.h" />
-    <ClInclude Include="fileSys.h" />
     <ClInclude Include="FileUtils.h" />
     <ClInclude Include="NetworkUtils.h" />
     <ClInclude Include="Network\client.h" />
@@ -181,7 +180,6 @@
     <ClCompile Include="CSVUtils.cpp" />
     <ClCompile Include="CursesClass.cpp" />
     <ClCompile Include="File Renamer.cpp" />
-    <ClCompile Include="fileSys.cpp" />
     <ClCompile Include="FileUtils.cpp" />
     <ClCompile Include="NetworkUtils.cpp" />
     <ClCompile Include="Network\client.cpp" />
