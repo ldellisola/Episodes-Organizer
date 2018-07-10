@@ -105,7 +105,7 @@ bool getVideoFiles(string path, map<int, string>& exts, vector<string>& files, s
 	do {
 		ext = exts[++i];
 		files = listall(path, true, ext);
-	} while (i < 4 && files.size() == 0);
+	} while (i < exts.size() && files.size() == 0);
 
 	if (files.size() == 0)
 		return false;

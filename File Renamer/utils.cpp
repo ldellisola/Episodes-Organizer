@@ -24,6 +24,7 @@ string getName(CursesClass & curses)
 int getSeason(CursesClass & curses)
 {
 	clear();
+	echo();
 	curses << "Season is:\n";
 	move(1, 0);
 	return curses.getNumberString(1, 0, "Tonto, solo numeros");
@@ -219,6 +220,7 @@ bool askForIntendedShow(vector<ShowData>& posibleShows, ShowData& data, CursesCl
 		}
 	}
 	if (index >= 0 && index < posibleShows.size()) {
+		color_set(1, nullptr);
 		data = posibleShows[index];
 		return true;
 	}
@@ -234,6 +236,7 @@ map<int, string> getVideoFormatDictionary()
 	a[1] = ".avi";
 	a[2] = ".mkv";
 	a[3] = ".mpeg";
+	a[4] = ".m4v";
 
 	return a;
 }
