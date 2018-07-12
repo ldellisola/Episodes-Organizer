@@ -57,10 +57,19 @@ vector<string> getNameFromFile()
 
 string getEpisode(string ep, CutPos pos)
 {
-	int sss = pos.end - pos.start;
-	if (sss == 0)
-		sss = 1;
+
 	string retValue = ep.substr(pos.start, pos.end- pos.start);
+
+	char a = retValue[1];
+	char b = retValue[0];
+	bool dig = isdigit(a);
+
+	if (!dig) {				
+		retValue[0] = '0';
+		retValue[1] = b;
+	}
+
+
 	return retValue;
 }
 
